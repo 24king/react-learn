@@ -27,6 +27,7 @@ class Board extends React.Component {
     }
   }
   handleClick(i) {
+    // TODO 为什么这里是创建了副本而不是直接更新 不可变性
     const squares = this.state.squares.slice();
     squares[i] = 'X'
     this.setState({squares:squares})
