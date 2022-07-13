@@ -31,14 +31,15 @@ class Board extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      squares: Array(9).fill(null)
+      squares: Array(9).fill(null),
+      xIsNext: true,
     }
   }
   handleClick(i) {
     // TODO 为什么这里是创建了副本而不是直接更新 不可变性
     const squares = this.state.squares.slice();
-    squares[i] = 'X'
-    this.setState({squares:squares})
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({squares:squares, xIsNext: !this.state.xIsNext})
   }
   renderSquare(i) {
     return <Square value={this.state.squares[i]}
